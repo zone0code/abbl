@@ -1,5 +1,7 @@
 use <abbl-base.scad>
-kw=10;
+use <bitgrid.scad> 
+
+kw=5;
 kh=4;
 
 ks=14;
@@ -8,12 +10,12 @@ border=7;
 
 dpth=3;
 
-pw=208;
+pw=104;
 ph=96;
 
 module keyplate2() {
      linear_extrude(dpth) 
-    difference() {
+     difference() {
 
         square([pw,ph], center=true);
         keycutout();
@@ -23,7 +25,7 @@ module keyplate2() {
 
 module keyplate() {
      linear_extrude(dpth) 
-    difference() {
+     difference() {
 
         square([2*border+kw*ks+spc*(kw-1), 2*border+kh*ks+spc*(kh-1)], center=true);
         keycutout();
@@ -31,20 +33,6 @@ module keyplate() {
     }
 }
 
-module dollarmites() {
-     linear_extrude(dpth) 
-    difference() {
-
-        union() {
-         translate([-170/2,0,0]) resize([50,95,0]) circle(25);   
-         translate([170/2,0,0]) resize([50,95,0]) circle(25); 
-         square([170,95], center =true)   ;
-        }
-        keycutout();
-        
-    }
-    
-}
 
 module keycutout() {
 translate([-(kw*ks+spc*(kw-1))/2,-(kh*ks+spc*(kh-1))/2 , 0]) union() {
@@ -76,7 +64,5 @@ module stabhole() {
 }
 
 
-
-//dollarmites();
+translate([])angle(13, 90) {angle(12, 90) {angle(13, 90) {rounded_beam(12);}}};
 keyplate2();
-translate([-98,-44,-4]) rotate([90,0,90])scale([1,1,0.5]) beam(12);

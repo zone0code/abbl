@@ -170,35 +170,7 @@ module studs(number, screwholes=false, chamfer=false) {
     }
 }
 
-/**not useful
-module lock_beam(number_of_holes) {
-    difference() {
-        union() {
-        rotate([0,90,90]) translate([-beam_width/2,0,0]) rounded_beam(2);
-        translate([0,0,beam_width/2]) beam(1,false) { beam(number_of_holes+2) { beam(1,false); } };
-        rotate([0,90,90]) translate([-beam_width/2,-(number_of_holes+1)*beam_width,0]) rounded_beam(2);
-        }
-        rotate([0,90,90]) translate([-beam_width/2,0,0]) cut_holes(2);
-        rotate([0,90,90]) translate([-beam_width/2,-(number_of_holes+1)*beam_width,0]) cut_holes(2);
-        
-    }
-}
+//circle_beam(12);
 
-module lock_halfbeam(number_of_holes) {
-    difference() {
-        union() {
-        rotate([0,90,90]) translate([-beam_width/2,0,0]) rounded_beam(2);
-        scale([1,1,0.5]) translate([0,0,beam_width/2]) beam(1,false) { beam(number_of_holes+2) { beam(1,false); } };
-        rotate([0,90,90]) translate([-beam_width/2,-(number_of_holes+1)*beam_width,0]) rounded_beam(2);
-        }
-        rotate([0,90,90]) translate([-beam_width/2,0,0]) cut_holes(2);
-        rotate([0,90,90]) translate([-beam_width/2,-(number_of_holes+1)*beam_width,0]) cut_holes(2);
-        
-    }
-}
-*/
-//circle_beam(16);
-
-//lock_beam(20);
-//angle(, 75) {angle(5, -45) {angle(10, -45) {rounded_beam(6); rotate([0,0,90]) rounded_beam(3);}}}
-studs(8, true, true);
+angle(4, 75) {angle(5, -45) {angle(10, -45) {rounded_beam(6); rotate([0,0,90]) rounded_beam(3);}}}
+//studs(8, true, true);
